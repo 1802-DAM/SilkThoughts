@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración - SilkThoughts</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>SilkThoughts · Admin</h1>
+    <nav id="main-nav"></nav>
+  </header>
+
+  <main class="admin-container">
+    <section class="admin-header-panel">
+      <div class="panel-header">
+        <h2>Panel de administración</h2>
+        <p>Gestiona usuarios, revisa solicitudes de psicólogo y modera publicaciones reportadas.</p>
+      </div>
+
+      <nav class="tabs-admin" aria-label="Secciones administrativas">
+        <button type="button" class="tab-btn activo" data-tab="usuarios">Usuarios</button>
+        <button type="button" class="tab-btn" data-tab="solicitudes">Solicitudes de psicólogo</button>
+        <button type="button" class="tab-btn" data-tab="reportadas">Publicaciones reportadas</button>
+      </nav>
+    </section>
+
+    <section id="tab-usuarios" class="tab-content">
+      <div class="panel-admin">
+        <div class="panel-header">
+          <h2>Gestión de usuarios</h2>
+          <p>Administra cuentas registradas y revisa su información general.</p>
+        </div>
+
+        <div id="mensaje-usuarios" aria-live="polite" aria-atomic="true"></div>
+        <div id="lista-usuarios" class="lista-admin"></div>
+      </div>
+    </section>
+
+    <section id="tab-solicitudes" class="tab-content" style="display:none;">
+      <div class="panel-admin">
+        <div class="panel-header">
+          <h2>Solicitudes de psicólogo pendientes</h2>
+          <p>Aprueba o rechaza solicitudes de nuevos profesionales en revisión.</p>
+        </div>
+
+        <div id="mensaje-solicitudes" aria-live="polite" aria-atomic="true"></div>
+        <div id="lista-solicitudes" class="lista-admin"></div>
+      </div>
+    </section>
+
+    <section id="tab-reportadas" class="tab-content" style="display:none;">
+      <div class="panel-admin">
+        <div class="panel-header">
+          <h2>Publicaciones reportadas</h2>
+          <p>Revisa contenido marcado por usuarios y decide si mantenerlo visible o eliminarlo.</p>
+        </div>
+
+        <div id="mensaje-reportadas" aria-live="polite" aria-atomic="true"></div>
+        <div id="lista-reportadas" class="lista-admin"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,1098 @@
+/* =========================================================
+   1. TOKENS
+========================================================= */
+:root {
+  --font-base: 'Segoe UI', system-ui, sans-serif;
+
+  --color-bg: #f4f6f8;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f9fafb;
+  --color-border: #d1d5db;
+  --color-border-soft: #e5e7eb;
+  --color-text: #2b2b2b;
+  --color-text-strong: #111827;
+  --color-text-muted: #6b7280;
+
+  --color-brand: #2c5f5f;
+  --color-brand-hover: #1f4747;
+
+  --color-primary: #2563eb;
+  --color-primary-soft: rgba(37, 99, 235, 0.12);
+
+  --color-success: #166534;
+  --color-success-bg: #dcfce7;
+
+  --color-danger: #b91c1c;
+  --color-danger-bg: #fee2e2;
+
+  --color-warning: #92400e;
+  --color-warning-bg: #fef3c7;
+  --color-warning-border: #fde68a;
+  --color-warning-soft: rgba(217, 119, 6, 0.12);
+
+  --color-info: #1d4ed8;
+  --color-info-bg: #eef4ff;
+
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(15, 23, 42, 0.06);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 10px;
+  --space-4: 12px;
+  --space-5: 14px;
+  --space-6: 16px;
+  --space-8: 20px;
+  --space-10: 24px;
+  --space-12: 32px;
+  --space-14: 36px;
+  --space-16: 48px;
+}
+
+/* =========================================================
+   2. RESET Y BASE
+========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* =========================================================
+   3. HEADER Y NAV
+========================================================= */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  padding: 16px 32px;
+  background-color: var(--color-brand);
+  color: white;
+}
+
+.app-header nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.app-header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.app-header nav button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.nav-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-usuario small {
+  opacity: 0.75;
+  font-size: 0.82rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   4. LAYOUTS GENERALES
+========================================================= */
+.foro-container,
+.detalle-container {
+  max-width: 700px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+
+.agenda-container,
+.admin-container,
+.publicacion-container,
+.postulacion-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.publicacion-container,
+.postulacion-container,
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.vista-agenda,
+.detalle-publicacion,
+.comentarios-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* =========================================================
+   5. COMPONENTES BASE
+========================================================= */
+.panel,
+.panel-agenda,
+.panel-publicacion,
+.admin-header-panel,
+.panel-admin,
+.postulacion-hero,
+.panel-postulacion,
+.nueva-publicacion,
+.comentarios {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-2xl);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+}
+
+.panel-header,
+.card-formulario-header {
+  margin-bottom: 18px;
+}
+
+.panel-header h2,
+.card-formulario-header h3 {
+  margin-bottom: 6px;
+  font-size: 1.35rem;
+  color: var(--color-text-strong);
+}
+
+.panel-header p,
+.card-formulario-header p {
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.sub {
+  display: block;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   6. BOTONES
+========================================================= */
+.btn-primario,
+.btn-principal,
+.btn-aprobar,
+.btn-rechazar,
+.nueva-publicacion button,
+#form-comentario button,
+.auth-container button,
+.buscador-psicologo button,
+#form-disponibilidad button,
+.bloque-disponible button,
+.tarjeta-reserva button {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 10px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.btn-primario,
+.btn-principal {
+  background: var(--color-primary);
+  color: white;
+}
+
+.btn-primario:hover,
+.btn-principal:hover,
+.btn-aprobar:hover,
+.btn-rechazar:hover,
+.nueva-publicacion button:hover,
+#form-comentario button:hover,
+.auth-container button:hover,
+.buscador-psicologo button:hover,
+#form-disponibilidad button:hover,
+.bloque-disponible button:hover,
+.tarjeta-reserva button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btn-secundario,
+.app-header nav button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: #374151;
+  border-radius: var(--radius-lg);
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secundario:hover {
+  background: var(--color-surface-soft);
+}
+
+.btn-aprobar {
+  background: var(--color-success);
+  color: white;
+}
+
+.btn-rechazar {
+  background: var(--color-danger);
+  color: white;
+}
+
+.btn-reportar {
+  color: #b45309;
+  border-color: #fcd34d;
+  background: #fffbeb;
+}
+
+.btn-reportar:hover {
+  background: #fef3c7;
+}
+
+/* =========================================================
+   7. CAMPOS DE FORMULARIO
+========================================================= */
+.auth-container input,
+.nueva-publicacion input,
+.nueva-publicacion textarea,
+#form-comentario textarea,
+#form-disponibilidad input,
+#form-disponibilidad select,
+.campo-form input,
+.campo-form select,
+.buscador-psicologo input,
+.form-comentario textarea,
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea,
+.acciones-admin select,
+.reporte-box select,
+.reporte-box textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.campo-form input,
+.campo-form select,
+.buscador-psicologo input,
+.form-comentario textarea {
+  background: var(--color-surface-soft);
+}
+
+.auth-container input:focus,
+.nueva-publicacion input:focus,
+.nueva-publicacion textarea:focus,
+#form-comentario textarea:focus,
+#form-disponibilidad input:focus,
+#form-disponibilidad select:focus,
+.campo-form input:focus,
+.campo-form select:focus,
+.buscador-psicologo input:focus,
+.form-comentario textarea:focus,
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus,
+.reporte-box select:focus,
+.reporte-box textarea:focus,
+.acciones-admin select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 4px var(--color-primary-soft);
+}
+
+/* =========================================================
+   8. MENSAJES Y ESTADOS
+========================================================= */
+#mensaje-registro,
+#mensaje-login,
+#mensaje-comentario,
+#mensaje-reporte {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.mensaje {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.mensaje.info {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.mensaje.exito {
+  background: #ecfdf3;
+  color: var(--color-success);
+}
+
+.mensaje.error {
+  background: #fef2f2;
+  color: var(--color-danger);
+}
+
+.error {
+  color: #c0392b;
+}
+
+.exito {
+  color: #27ae60;
+}
+
+.estado {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+  text-align: center;
+  margin-top: 16px;
+}
+
+.estado-cargando {
+  background: #f5f5f5;
+  color: #555;
+}
+
+.estado-vacio {
+  background: var(--color-surface-soft);
+  color: #374151;
+}
+
+.estado-error {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.badge-estado,
+.estado-pendiente,
+.estado-confirmada,
+.estado-cancelada {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.estado-activo {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.estado-inactivo {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.estado-bloqueado {
+  background: var(--color-danger-bg);
+  color: #991b1b;
+}
+
+.estado-reportada {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.estado-pendiente {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.estado-confirmada {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.estado-cancelada {
+  background: var(--color-danger-bg);
+  color: #991b1b;
+}
+
+/* =========================================================
+   9. AUTH
+========================================================= */
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 32px;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.auth-container h1 {
+  margin-bottom: 24px;
+  color: var(--color-brand);
+  text-align: center;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-container label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.auth-container button {
+  margin-top: 8px;
+  background-color: var(--color-brand);
+  color: white;
+}
+
+.auth-container button:hover {
+  background-color: var(--color-brand-hover);
+}
+
+/* =========================================================
+   10. FORO
+========================================================= */
+.nueva-publicacion form,
+#form-comentario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.tarjeta-publicacion {
+  background: var(--color-surface);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s;
+}
+
+.tarjeta-publicacion:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.meta-publicacion,
+.meta-comentario {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #777;
+  margin-top: 8px;
+}
+
+.comentario {
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+}
+
+/* =========================================================
+   11. AGENDA
+========================================================= */
+.agenda-container h2 {
+  margin: 24px 0 12px;
+  color: var(--color-brand);
+}
+
+.buscador-psicologo,
+.form-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid-dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.campo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo-form label,
+.buscador-psicologo label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.lista-agenda {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.bloque-disponible,
+.tarjeta-reserva {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-soft);
+  flex-wrap: wrap;
+}
+
+.bloque-disponible span,
+.tarjeta-reserva span {
+  display: block;
+  color: #1f2937;
+}
+
+.bloque-disponible button {
+  background: #0f766e;
+  color: white;
+  flex-shrink: 0;
+}
+
+.tarjeta-reserva button {
+  background: var(--color-primary);
+  color: white;
+}
+
+.tarjeta-reserva button[data-accion="cancelada"] {
+  background: #dc2626;
+}
+
+#form-disponibilidad {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-surface);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  max-width: 320px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   12. PUBLICACION
+========================================================= */
+.link-volver {
+  align-self: flex-start;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: -8px;
+}
+
+.link-volver:hover {
+  text-decoration: underline;
+}
+
+.form-comentario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-comentario textarea {
+  min-height: 130px;
+}
+
+.lista-comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tarjeta-comentario {
+  padding: 16px 18px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tarjeta-comentario .comentario-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+}
+
+.tarjeta-comentario .comentario-autor {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.tarjeta-comentario .comentario-texto {
+  color: #374151;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.post-titulo {
+  font-size: 1.8rem;
+  line-height: 1.25;
+  color: var(--color-text-strong);
+  margin-bottom: 10px;
+}
+
+.post-contenido {
+  color: #374151;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  margin-bottom: 16px;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-soft);
+}
+
+.post-acciones {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border-soft);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.reporte-box {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--color-warning-border);
+  background: #fffbeb;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reporte-box select:focus,
+.reporte-box textarea:focus {
+  border-color: #d97706;
+  box-shadow: 0 0 0 4px var(--color-warning-soft);
+}
+
+.reporte-box textarea {
+  min-height: 100px;
+}
+
+.reporte-acciones {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* =========================================================
+   13. ADMIN
+========================================================= */
+.tabs-admin {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.tab-btn {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-soft);
+  color: #374151;
+  border-radius: var(--radius-lg);
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.activo {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+.lista-admin {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tarjeta-admin {
+  border: 1px solid var(--color-border-soft);
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.tarjeta-admin-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.tarjeta-admin-body {
+  color: #374151;
+  line-height: 1.6;
+}
+
+.acciones-admin {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tarjeta-admin-reportada {
+  border-color: var(--color-warning-border);
+  background: #fffbeb;
+}
+
+/* =========================================================
+   14. POSTULACION
+========================================================= */
+.postulacion-page {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.postulacion-hero h2 {
+  margin-bottom: 8px;
+  font-size: 1.9rem;
+  color: var(--color-text-strong);
+}
+
+.postulacion-hero p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  max-width: 760px;
+}
+
+.badge-seccion {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  background: #e6fffb;
+  color: #0f766e;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.panel-estado {
+  margin: 0;
+}
+
+.panel-estado .estado,
+#estado-solicitud {
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  text-align: center;
+  box-shadow: none;
+}
+
+.panel-estado h3,
+.panel-estado strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.35rem;
+  color: var(--color-text-strong);
+}
+
+.panel-estado p {
+  color: var(--color-text-muted);
+}
+
+.card-formulario {
+  background: transparent;
+  padding: 0;
+}
+
+.bloque-formulario {
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.bloque-formulario legend {
+  padding: 0 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.grid-formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grupo-campo-full {
+  grid-column: 1 / -1;
+}
+
+.grupo-campo label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.ayuda-campo {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.acciones-formulario {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* =========================================================
+   15. RESPONSIVE
+========================================================= */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .agenda-container,
+  .admin-container,
+  .publicacion-container,
+  .postulacion-container {
+    padding: 20px 16px 36px;
+  }
+
+  .panel,
+  .panel-agenda,
+  .panel-publicacion,
+  .admin-header-panel,
+  .panel-admin,
+  .postulacion-hero,
+  .panel-postulacion,
+  .nueva-publicacion,
+  .comentarios {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .grid-dos-columnas,
+  .grid-formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .grupo-campo-full {
+    grid-column: auto;
+  }
+
+  .bloque-disponible,
+  .tarjeta-reserva,
+  .tarjeta-admin-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .acciones-admin {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .acciones-admin button,
+  .acciones-admin select,
+  .btn-primario,
+  .btn-principal,
+  .post-acciones .btn-secundario,
+  .reporte-acciones .btn-principal,
+  .reporte-acciones .btn-secundario,
+  .bloque-disponible button,
+  .tarjeta-reserva button {
+    width: 100%;
+  }
+
+  .acciones-formulario,
+  .post-acciones {
+    justify-content: stretch;
+  }
+
+  .post-titulo {
+    font-size: 1.45rem;
+  }
+
+  /* =========================================================
+   UX: loading states
+========================================================= */
+.is-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+.is-loading .btn-text {
+  visibility: hidden;
+}
+
+.is-loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  margin-left: -8px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin-loading 0.7s linear infinite;
+}
+
+[aria-busy="true"] {
+  position: relative;
+}
+
+[aria-busy="true"] .loading-fade {
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e5e7eb;
+  border-radius: 12px;
+}
+
+.skeleton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.55),
+    transparent
+  );
+  animation: skeleton-shimmer 1.1s infinite;
+}
+
+.skeleton-line {
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.skeleton-line:last-child {
+  margin-bottom: 0;
+  width: 75%;
+}
+
+.skeleton-title {
+  height: 24px;
+  width: 55%;
+  margin-bottom: 16px;
+}
+
+.skeleton-card {
+  padding: 18px;
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface-soft);
+}
+
+@keyframes spin-loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+}

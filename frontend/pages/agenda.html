@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda - SilkThoughts</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>SilkThoughts</h1>
+    <nav id="main-nav"></nav>
+  </header>
+
+  <main class="agenda-container">
+  <section id="vista-paciente" class="vista-agenda" style="display:none;">
+    <div class="panel-agenda">
+      <div class="panel-header">
+        <h2>Reservar hora de atención</h2>
+        <p>Busca la disponibilidad de tu psicólogo y selecciona un bloque horario.</p>
+      </div>
+
+      <div class="buscador-psicologo">
+        <div class="campo-form">
+          <label for="id-psicologo">ID del psicólogo</label>
+          <input type="number" id="id-psicologo" placeholder="Ej: 1" min="1">
+        </div>
+        <button id="btn-buscar-disponibilidad" class="btn-principal">Ver disponibilidad</button>
+      </div>
+
+      <div id="bloques-disponibles" class="lista-agenda"></div>
+    </div>
+
+    <div class="panel-agenda">
+      <div class="panel-header">
+        <h2>Mis reservas</h2>
+        <p>Aquí puedes revisar el estado actual de tus horas agendadas.</p>
+      </div>
+      <div id="mis-reservas" class="lista-agenda"></div>
+    </div>
+  </section>
+
+  <section id="vista-psicologo" class="vista-agenda" style="display:none;">
+    <div class="panel-agenda">
+      <div class="panel-header">
+        <h2>Registrar disponibilidad</h2>
+        <p>Define bloques de atención para que los pacientes puedan reservar.</p>
+      </div>
+
+      <form id="form-disponibilidad" class="form-agenda">
+        <div class="campo-form">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" required>
+        </div>
+
+        <div class="grid-dos-columnas">
+          <div class="campo-form">
+            <label for="hora-inicio">Hora inicio</label>
+            <input type="time" id="hora-inicio" required>
+          </div>
+
+          <div class="campo-form">
+            <label for="hora-fin">Hora fin</label>
+            <input type="time" id="hora-fin" required>
+          </div>
+        </div>
+
+        <div class="campo-form">
+          <label for="modalidad">Modalidad</label>
+          <select id="modalidad">
+            <option value="online">Online</option>
+            <option value="presencial">Presencial</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn-principal">Registrar bloque</button>
+      </form>
+
+      <p id="mensaje-disponibilidad" class="mensaje" role="alert"></p>
+    </div>
+
+    <div class="panel-agenda">
+      <div class="panel-header">
+        <h2>Mi agenda de citas</h2>
+        <p>Consulta aquí las reservas asignadas y su estado actual.</p>
+      </div>
+      <div id="mi-agenda" class="lista-agenda"></div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/agenda.js"></script>
+</body>
+</html>

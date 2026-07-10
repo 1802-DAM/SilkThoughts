@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foro - SilkThoughts</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>SilkThoughts</h1>
+    <nav id='main-nav'></nav>
+  </header>
+
+  <main class="foro-container">
+    <section class="nueva-publicacion">
+      <h2>Comparte lo que sientes</h2>
+      <form id="form-publicacion">
+        <input type="text" id="titulo" placeholder="Título breve" required maxlength="100">
+        <textarea id="contenido" placeholder="Escribe con confianza, esto es anónimo..." required rows="4"></textarea>
+        <button type="submit">Publicar</button>
+      </form>
+      <p id="mensaje-publicacion" role="alert"></p>
+    </section>
+
+    <section class="lista-publicaciones">
+      <h2>Publicaciones recientes</h2>
+      <div id="publicaciones"></div>
+    </section>
+  </main>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/session.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/foro.js"></script>
+</body>
+</html>

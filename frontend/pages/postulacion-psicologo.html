@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Postulación a Psicólogo | SilkThoughts</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="postulacion-page">
+  <header class="app-header">
+    <h1>SilkThoughts</h1>
+    <nav id="main-nav"></nav>
+  </header>
+
+  <main class="postulacion-container">
+    <section class="postulacion-hero">
+      <span class="badge-seccion">Verificación profesional</span>
+      <h2 id="titulo-postulacion">Postulación a Psicólogo</h2>
+      <p>
+        Completa este formulario para solicitar la verificación de tu perfil profesional.
+        Nuestro equipo revisará tus antecedentes antes de aprobar tu acceso como psicólogo.
+      </p>
+    </section>
+
+    <section id="estado-solicitud" class="panel-estado"></section>
+
+    <section id="seccion-formulario" class="panel-postulacion" style="display: none;">
+      <article class="card-formulario">
+        <div class="card-formulario-header">
+          <h3>Formulario de postulación</h3>
+          <p>Ingresa información real y actualizada. Estos datos serán usados para revisar tu solicitud.</p>
+        </div>
+
+        <form id="form-postulacion-psicologo" novalidate aria-labelledby="titulo-postulacion">
+          <fieldset class="bloque-formulario">
+            <legend>Información profesional</legend>
+
+            <div class="grid-formulario">
+              <div class="grupo-campo">
+                <label for="especialidad">Especialidad</label>
+                <input
+                  type="text"
+                  id="especialidad"
+                  name="especialidad"
+                  placeholder="Ej: Psicología clínica"
+                  autocomplete="organization-title"
+                  required
+                >
+              </div>
+
+              <div class="grupo-campo">
+                <label for="anios_experiencia">Años de experiencia</label>
+                <input
+                  type="number"
+                  id="anios_experiencia"
+                  name="anios_experiencia"
+                  placeholder="Ej: 5"
+                  min="0"
+                  required
+                >
+              </div>
+
+              <div class="grupo-campo">
+                <label for="modalidad_atencion">Modalidad de atención</label>
+                <select id="modalidad_atencion" name="modalidad_atencion" required>
+                  <option value="">Selecciona una opción</option>
+                  <option value="presencial">Presencial</option>
+                  <option value="virtual">Virtual</option>
+                  <option value="mixta">Mixta</option>
+                </select>
+              </div>
+
+              <div class="grupo-campo">
+                <label for="telefono_contacto">Teléfono de contacto</label>
+                <input
+                  type="tel"
+                  id="telefono_contacto"
+                  name="telefono_contacto"
+                  placeholder="Ej: +56 9 1234 5678"
+                  autocomplete="tel"
+                  required
+                >
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="bloque-formulario">
+            <legend>Antecedentes académicos</legend>
+
+            <div class="grid-formulario">
+              <div class="grupo-campo">
+                <label for="numero_colegiado">Número de colegiado</label>
+                <input
+                  type="text"
+                  id="numero_colegiado"
+                  name="numero_colegiado"
+                  placeholder="Ingresa tu número de registro"
+                  autocomplete="off"
+                  required
+                >
+              </div>
+
+              <div class="grupo-campo">
+                <label for="universidad_titulacion">Universidad de titulación</label>
+                <input
+                  type="text"
+                  id="universidad_titulacion"
+                  name="universidad_titulacion"
+                  placeholder="Ej: Universidad de Chile"
+                  autocomplete="organization"
+                  required
+                >
+              </div>
+
+              <div class="grupo-campo">
+                <label for="anio_titulacion">Año de titulación</label>
+                <input
+                  type="number"
+                  id="anio_titulacion"
+                  name="anio_titulacion"
+                  placeholder="Ej: 2018"
+                  min="1950"
+                  max="2100"
+                  required
+                >
+              </div>
+
+              <div class="grupo-campo grupo-campo-full">
+                <label for="documento_credencial">Documento o credencial</label>
+                <input
+                  type="text"
+                  id="documento_credencial"
+                  name="documento_credencial"
+                  placeholder="Ej: enlace, código o referencia del documento"
+                  aria-describedby="ayuda-documento"
+                  required
+                >
+                <small id="ayuda-documento" class="ayuda-campo">
+                  Ingresa el identificador, nombre de archivo o referencia del documento según el flujo actual del sistema.
+                </small>
+              </div>
+            </div>
+          </fieldset>
+
+          <div id="mensaje-postulacion" class="mensaje" aria-live="polite"></div>
+
+          <div class="acciones-formulario">
+            <button type="submit" id="btn-enviar-postulacion" class="btn-primario">
+              Enviar solicitud
+            </button>
+          </div>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/postulacion-psicologo.js"></script>
+</body>
+</html>
