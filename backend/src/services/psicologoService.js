@@ -1,4 +1,4 @@
-// src/services/psicologoService.js
+
 const PsicologoModel = require('../models/psicologoModel');
 
 function validarDatosPostulacion(datos) {
