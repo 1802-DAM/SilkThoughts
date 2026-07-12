@@ -95,10 +95,10 @@ if (!token || !usuarioGuardado) {
     seccionFormulario.style.display = 'none';
 
     try {
-      const respuesta = await fetch('http://localhost:3000/api/psicologos/mi-solicitud', {
+      const respuesta = await fetch(`${API_URL}/psicologos/mi-solicitud`, {
         headers: {
-          'Authorization': `Bearer ${sesion.token}`
-        }
+        'Authorization': `Bearer ${sesion.token}`,
+        },
       });
 
       if (respuesta.status === 404) {
@@ -157,13 +157,13 @@ if (!token || !usuarioGuardado) {
     btnEnviar.textContent = 'Enviando solicitud...';
 
     try {
-      const respuesta = await fetch('http://localhost:3000/api/psicologos/postular', {
+        const respuesta = await fetch(`${API_URL}/psicologos/postular`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${sesion.token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sesion.token}`,
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
       const data = await respuesta.json();

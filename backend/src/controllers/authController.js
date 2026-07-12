@@ -57,6 +57,7 @@ const AuthController = {
                 return res.status(401).json({ message: 'Credenciales incorrectas.'});
             }
 
+          
             const token = jwt.sign(
                 { id_usuario: usuario.id_usuario, id_rol: usuario.id_rol },
                 process.env.JWT_SECRET,
