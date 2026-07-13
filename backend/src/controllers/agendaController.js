@@ -1,3 +1,4 @@
+
 const DisponibilidadModel = require('../models/disponibilidadModel');
 const ReservaModel = require('../models/reservaModel');
 
@@ -27,7 +28,7 @@ const AgendaController = {
     }
   },
 
-  // Cualquier usuario ve la disponibilidad de un psicólogo específico
+  // Cualquier usuario puede ver la disponibilidad de un psicólogo específico
   async listarDisponibilidadPorPsicologo(req, res) {
     try {
       const { id_psicologo } = req.params;

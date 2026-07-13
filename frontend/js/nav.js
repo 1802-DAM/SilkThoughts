@@ -1,3 +1,4 @@
+
 function nombreRol(idRol) {
   if (idRol === 1) return 'Paciente';
   if (idRol === 2) return 'Psicólogo';

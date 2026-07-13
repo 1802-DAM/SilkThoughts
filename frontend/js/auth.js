@@ -1,5 +1,5 @@
 
-// Registro.
+// Registro
 
 const formRegistro = document.getElementById('form-registro');
 if (formRegistro) {
@@ -38,7 +38,7 @@ if (formRegistro) {
   });
 }
 
-// Login.
+// Login
 
 const formLogin = document.getElementById('form-login');
 if (formLogin) {

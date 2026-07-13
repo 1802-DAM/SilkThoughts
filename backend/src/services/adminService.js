@@ -1,4 +1,4 @@
-// src/services/adminService.js
+
 const UsuarioModel = require('../models/usuarioModel');
 const PsicologoModel = require('../models/psicologoModel');
 const PublicacionModel = require('../models/publicacionModel');

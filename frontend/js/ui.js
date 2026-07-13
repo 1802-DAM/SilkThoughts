@@ -1,3 +1,4 @@
+
 function mostrarMensaje(elementId, texto, tipo = 'info') {
   const el = document.getElementById(elementId);
   if (!el) return;

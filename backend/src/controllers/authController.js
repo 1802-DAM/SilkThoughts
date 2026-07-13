@@ -1,3 +1,4 @@
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UsuarioModel = require('../models/usuarioModel');
@@ -21,7 +22,7 @@ const AuthController = {
 
             const contrasena_hash = await bcrypt.hash(contrasena, SAL_ROUNDS);
 
-            // id_rol = 1 corresponde con "Paciente" (sera un registro publico)
+          
             const id_usuario = await UsuarioModel.crear({
                 nombre,
                 correo,

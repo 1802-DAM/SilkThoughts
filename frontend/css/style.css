@@ -1,6 +1,4 @@
-/* =========================================================
-   1. TOKENS
-========================================================= */
+/* Para los Tokens */
 :root {
   --font-base: 'Segoe UI', system-ui, sans-serif;
 
@@ -57,9 +55,7 @@
   --space-16: 48px;
 }
 
-/* =========================================================
-   2. RESET Y BASE
-========================================================= */
+/* Reset y base */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -88,9 +84,7 @@ textarea {
   resize: vertical;
 }
 
-/* =========================================================
-   3. HEADER Y NAV
-========================================================= */
+/* Header y nav */
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -141,9 +135,8 @@ textarea {
   flex-wrap: wrap;
 }
 
-/* =========================================================
-   4. LAYOUTS GENERALES
-========================================================= */
+/* Layouts generales */
+
 .foro-container,
 .detalle-container {
   max-width: 700px;
@@ -176,9 +169,7 @@ textarea {
   gap: 24px;
 }
 
-/* =========================================================
-   5. COMPONENTES BASE
-========================================================= */
+/* Componentes base */
 .panel,
 .panel-agenda,
 .panel-publicacion,
@@ -220,9 +211,7 @@ textarea {
   line-height: 1.5;
 }
 
-/* =========================================================
-   6. BOTONES
-========================================================= */
+/* Botones */
 .btn-primario,
 .btn-principal,
 .btn-aprobar,
@@ -299,9 +288,7 @@ textarea {
   background: #fef3c7;
 }
 
-/* =========================================================
-   7. CAMPOS DE FORMULARIO
-========================================================= */
+/* Campos del Formulario */
 .auth-container input,
 .nueva-publicacion input,
 .nueva-publicacion textarea,
@@ -357,9 +344,7 @@ textarea {
   box-shadow: 0 0 0 4px var(--color-primary-soft);
 }
 
-/* =========================================================
-   8. MENSAJES Y ESTADOS
-========================================================= */
+/* mensajes y estado de mensajes */
 #mensaje-registro,
 #mensaje-login,
 #mensaje-comentario,
@@ -469,9 +454,7 @@ textarea {
   color: #991b1b;
 }
 
-/* =========================================================
-   9. AUTH
-========================================================= */
+/* Autenticacion */
 .auth-container {
   max-width: 400px;
   margin: 80px auto;
@@ -508,9 +491,7 @@ textarea {
   background-color: var(--color-brand-hover);
 }
 
-/* =========================================================
-   10. FORO
-========================================================= */
+/* Foro */
 .nueva-publicacion form,
 #form-comentario {
   display: flex;
@@ -547,9 +528,8 @@ textarea {
   border-top: 1px solid #eee;
 }
 
-/* =========================================================
-   11. AGENDA
-========================================================= */
+/* Agenda */
+
 .agenda-container h2 {
   margin: 24px 0 12px;
   color: var(--color-brand);
@@ -632,9 +612,7 @@ textarea {
   box-shadow: var(--shadow-sm);
 }
 
-/* =========================================================
-   12. PUBLICACION
-========================================================= */
+/* Publicaciones */
 .link-volver {
   align-self: flex-start;
   color: var(--color-primary);
@@ -752,9 +730,7 @@ textarea {
   flex-wrap: wrap;
 }
 
-/* =========================================================
-   13. ADMIN
-========================================================= */
+/* Perfil de Admin*/
 .tabs-admin {
   display: flex;
   gap: 12px;
@@ -819,9 +795,7 @@ textarea {
   background: #fffbeb;
 }
 
-/* =========================================================
-   14. POSTULACION
-========================================================= */
+/* Estilos del formulario de Postulacion*/
 .postulacion-page {
   min-height: 100vh;
   background-color: var(--color-bg);
@@ -931,9 +905,7 @@ textarea {
   margin-top: 8px;
 }
 
-/* =========================================================
-   15. RESPONSIVE
-========================================================= */
+/* Navegacion responsiva */
 @media (max-width: 768px) {
   .app-header {
     padding: 16px 20px;
@@ -1003,9 +975,9 @@ textarea {
     font-size: 1.45rem;
   }
 
-  /* =========================================================
-   UX: loading states
-========================================================= */
+  
+   /*Estados de Carga */
+
 .is-loading {
   position: relative;
   pointer-events: none;

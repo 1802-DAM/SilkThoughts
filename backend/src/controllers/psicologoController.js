@@ -1,5 +1,5 @@
 
-// src/controllers/psicologoController.js
+
 const psicologoService = require('../services/psicologoService');
 
 const PsicologoController = {

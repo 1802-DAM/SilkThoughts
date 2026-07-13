@@ -1,5 +1,5 @@
 
-// src/controllers/adminController.js
+
 const adminService = require('../services/adminService');
 
 const AdminController = {
