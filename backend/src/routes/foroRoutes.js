@@ -7,7 +7,7 @@ const verificarToken = require('../middlewares/authMiddleware');
 // Rutas públicas, no requieren inicio de sesión.
 router.get('/', ForoController.listarPublicaciones);
 router.get('/:id', ForoController.obtenerPublicacion);
-router.get('/:id/comentarios', ForoController.listarComentarios);
+
 
 // Rutas protegidas, si requieren inicio de sesión.
 router.post('/', verificarToken, ForoController.crearPublicacion);
