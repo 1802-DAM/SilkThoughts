@@ -5,7 +5,13 @@ const ForoController = require ('../controllers/foroController');
 const verificarToken = require ('../middlewares/authMiddleware');
 
 
-//Rutas que estaran protegidas, si requieren inicio de sesión.
+//Rutas de acceso publico no necesitan inicio de sesión. 
+router.get('/', ForoController.listarPublicaciones);
+router.get('/:id', ForoController.obtenerPublicacion);
+router.get('/:id/comentarios', ForoController.listarComentarios);
+
+
+//Rutas  protegidas, requieren inicio de sesión.
 
 router.post('/', verificarToken, ForoController.crearPublicacion);
 router.post('/:id/comentarios', verificarToken, ForoController.crearComentario);

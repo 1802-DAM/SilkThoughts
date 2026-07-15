@@ -41,45 +41,53 @@ const AuthController = {
     },
 
     async login (req, res) {
-        try {
-            const { correo, contrasena } = req.body;
+    try {
+        const { correo, contrasena } = req.body;
 
-            if (!correo || !contrasena) {
-                return res.status(400).json({ message: 'Correo y contraseña son obligatorios.'});
-            }
-
-            const usuario = await UsuarioModel.buscarPorCorreo(correo);
-            if (!usuario) {
-                return res.status(401).json({ message: 'Credenciales incorrectas.'});
-            }
-            
-            const coincide = await bcrypt.compare(contrasena, usuario.contrasena_hash);
-            if (!coincide) {
-                return res.status(401).json({ message: 'Credenciales incorrectas.'});
-            }
-
-          
-            const token = jwt.sign(
-                { id_usuario: usuario.id_usuario, id_rol: usuario.id_rol },
-                process.env.JWT_SECRET,
-                { expiresIn: '2h' }
-            );
-
-            res.json({
-                message: 'Inicio de sesión exitoso.',
-                token,
-                usuario: {
-                    id_usuario: usuario.id_usuario,
-                    nombre: usuario.nombre,
-                    correo: usuario.correo,
-                    id_rol: usuario.id_rol
-                }
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Error interno del servidor.'});
+        if (!correo || !contrasena) {
+            return res.status(400).json({ message: 'Correo y contraseña son obligatorios.'});
         }
+
+        const usuario = await UsuarioModel.buscarPorCorreo(correo);
+        console.log ('Usuario encontrado:', usuario);
+        if (!usuario) {
+            return res.status(401).json({ message: 'Credenciales incorrectas.'});
+        }
+
+        const coincide = await bcrypt.compare(contrasena, usuario.contrasena_hash);
+        if (!coincide) {
+            return res.status(401).json({ message: 'Credenciales incorrectas.'});
+        }
+
+        if (usuario.estado === 'bloqueado') {
+            return res.status(403).json({ message: 'Tu cuenta se encuentra bloqueada.' });
+        }
+
+        if (usuario.estado !== 'activo') {
+            return res.status(403).json({ message: 'Tu cuenta no tiene acceso habilitado.' });
+        }
+
+        const token = jwt.sign(
+            { id_usuario: usuario.id_usuario, id_rol: usuario.id_rol },
+            process.env.JWT_SECRET,
+            { expiresIn: '2h' }
+        );
+
+        res.json({
+            message: 'Inicio de sesión exitoso.',
+            token,
+            usuario: {
+                id_usuario: usuario.id_usuario,
+                nombre: usuario.nombre,
+                correo: usuario.correo,
+                id_rol: usuario.id_rol
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Error interno del servidor.'});
     }
+}
 
 };
 
