@@ -1,77 +1,95 @@
-const sesion = requerirSesion();
 
-if (sesion) {
-  renderNav();
+const sesion = obtenerSesion(); 
 
-  const contenedor = document.getElementById('publicaciones');
+renderNav();
 
-  function escaparHTML(texto) {
-    const div = document.createElement('div');
-    div.textContent = texto;
-    return div.innerHTML;
+const contenedor = document.getElementById('publicaciones');
+const formPublicacion = document.getElementById('form-publicacion');
+const avisoLogin = document.getElementById('aviso-login');
+
+function actualizarUIsegunSesion() {
+  if (sesion.token) {
+    if (formPublicacion) formPublicacion.style.display = 'block';
+    if (avisoLogin) avisoLogin.style.display = 'none';
+  } else {
+    if (formPublicacion) formPublicacion.style.display = 'none';
+    if (avisoLogin) avisoLogin.style.display = 'block';
   }
+}
 
-  function renderCargandoPublicaciones() {
-    contenedor.innerHTML = `
-      <div class="estado estado-cargando">
-        <p>Cargando publicaciones...</p>
-      </div>
-    `;
-  }
+function escaparHTML(texto) {
+  const div = document.createElement('div');
+  div.textContent = texto;
+  return div.innerHTML;
+}
 
-  function renderVacioPublicaciones() {
-    contenedor.innerHTML = `
-      <div class="estado estado-vacio">
-        <h3>Aún no hay publicaciones</h3>
-        <p>Comparte la primera reflexión o tema para iniciar la conversación.</p>
-      </div>
-    `;
-  }
+function renderCargandoPublicaciones() {
+  contenedor.innerHTML = `
+    <div class="estado estado-cargando">
+      <p>Cargando publicaciones...</p>
+    </div>
+  `;
+}
 
-  function renderErrorPublicaciones() {
-    contenedor.innerHTML = `
-      <div class="estado estado-error">
-        <h3>No se pudieron cargar las publicaciones</h3>
-        <p>Verifica la conexión con el servidor e intenta nuevamente.</p>
-      </div>
-    `;
-  }
+function renderVacioPublicaciones() {
+  contenedor.innerHTML = `
+    <div class="estado estado-vacio">
+      <h3>Aún no hay publicaciones</h3>
+      <p>Comparte la primera reflexión o tema para iniciar la conversación.</p>
+    </div>
+  `;
+}
 
-  async function cargarPublicaciones() {
-    renderCargandoPublicaciones();
+function renderErrorPublicaciones() {
+  contenedor.innerHTML = `
+    <div class="estado estado-error">
+      <h3>No se pudieron cargar las publicaciones</h3>
+      <p>Verifica la conexión con el servidor e intenta nuevamente.</p>
+    </div>
+  `;
+}
 
-    try {
-      const respuesta = await fetch(`${API_URL}/forum`);
-      const publicaciones = await respuesta.json();
+async function cargarPublicaciones() {
+  renderCargandoPublicaciones();
 
-      if (!respuesta.ok) {
-        renderErrorPublicaciones();
-        return;
-      }
+  try {
+    const respuesta = await fetch(`${API_URL}/forum`);
+    const publicaciones = await respuesta.json();
 
-      if (!publicaciones.length) {
-        renderVacioPublicaciones();
-        return;
-      }
-
-      contenedor.innerHTML = publicaciones.map(pub => `
-        <article class="tarjeta-publicacion" onclick="window.location.href='publicacion.html?id=${pub.id_publicacion}'">
-          <h3>${escaparHTML(pub.titulo)}</h3>
-          <p>${escaparHTML(pub.contenido.substring(0, 150))}${pub.contenido.length > 150 ? '...' : ''}</p>
-          <div class="meta-publicacion">
-            <span>Por ${escaparHTML(pub.autor)}</span>
-            <span>${pub.total_comentarios} comentario(s)</span>
-          </div>
-        </article>
-      `).join('');
-    } catch (error) {
+    if (!respuesta.ok) {
       renderErrorPublicaciones();
+      return;
     }
-  }
 
-  document.getElementById('form-publicacion').addEventListener('submit', async (e) => {
+    if (!publicaciones.length) {
+      renderVacioPublicaciones();
+      return;
+    }
+
+    contenedor.innerHTML = publicaciones.map(pub => `
+      <article class="tarjeta-publicacion" onclick="window.location.href='publicacion.html?id=${pub.id_publicacion}'">
+        <h3>${escaparHTML(pub.titulo)}</h3>
+        <p>${escaparHTML(pub.contenido.substring(0, 150))}${pub.contenido.length > 150 ? '...' : ''}</p>
+        <div class="meta-publicacion">
+          <span>Por ${escaparHTML(pub.autor)}</span>
+          <span>${pub.total_comentarios} comentario(s)</span>
+        </div>
+      </article>
+    `).join('');
+  } catch (error) {
+    renderErrorPublicaciones();
+  }
+}
+
+if (formPublicacion) {
+  formPublicacion.addEventListener('submit', async (e) => {
     e.preventDefault();
     limpiarMensaje('mensaje-publicacion');
+
+    if (!sesion.token) {
+      mostrarMensaje('mensaje-publicacion', 'Debes iniciar sesión para publicar.', 'error');
+      return;
+    }
 
     const datos = {
       titulo: document.getElementById('titulo').value.trim(),
@@ -96,12 +114,13 @@ if (sesion) {
       }
 
       mostrarMensaje('mensaje-publicacion', 'Publicación creada exitosamente.', 'exito');
-      document.getElementById('form-publicacion').reset();
+      formPublicacion.reset();
       cargarPublicaciones();
     } catch (error) {
       mostrarMensaje('mensaje-publicacion', 'No se pudo conectar con el servidor.', 'error');
     }
   });
-
-  cargarPublicaciones();
 }
+
+actualizarUIsegunSesion();
+cargarPublicaciones();
